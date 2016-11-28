@@ -15,13 +15,12 @@ $(document).ready(function() {
 
   newQueryButton();
 
-//Figure out how to insert strings in to ajax query
-//May need to replace queryButtons class with id and assign value to text of given string
+//Click event for each button
   $(".queryButtons").on("click", "button", function() {
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q="+$(this).text()+"&api_key=dc6zaTOxFJmzC";    
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q="+$(this).text()+"&api_key=dc6zaTOxFJmzC&limit=10";    
         $.ajax({url:queryURL,method:'GET'})
             .done(function(response) {
-                console.log(response);
+				console.log(response);
             });
   });
 
