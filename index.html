@@ -24,7 +24,7 @@
 
 		<div class="row">
 			<div class="col-sm-9">
-				<div class="queryButtons"></div>
+				<div class="showButtons"></div>
 			</div>
 			<div class="col-sm-3">
 				<div id="poweredBy">
@@ -35,7 +35,14 @@
 
 		<div class="row">
 			<div class="col-sm-8" id="gifs"></div>
-			<div class="col-sm-4" id="search"></div>
+			<div class="col-sm-4" id="search">
+				<form id="query-form">
+	        		<label for="query-input">Add a Show</label>
+	        		<input type="text" id="query-input"><br>
+	        		<!-- Button triggers new movie to be added -->
+	        		<input id="add-show" type="submit" value="Add Show">
+     			</form>
+			</div>
 		</div>
 
 	</div>

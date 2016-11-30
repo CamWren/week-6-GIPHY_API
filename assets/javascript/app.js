@@ -1,30 +1,66 @@
 $(document).ready(function() {
   
-  var queries = ["The Office", "Seinfeld", "Mad Men", "An Idiot Abroad"];
+  var shows = ["The Office", "Seinfeld", "Mad Men", "An Idiot Abroad"];
+
+//Displays static gif and gif rating
+  function showMeDuhGIF() {
+
+    var show = $(this).attr("data-name");
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q="+ show +"&api_key=dc6zaTOxFJmzC&limit=10&fmt=json";
+  
+
+    //Creates AJAX call for each button
+    $.ajax({url:queryURL,method:'GET'}).done(function(response) {
+        
+      //var gifsDiv = $("<div class='gifsDiv'>");
+
+      var rating = response.rating;
+
+      console.log(rating);
+
+      //var ratingParagraph = $("<p>").text("Rating: " + rating);
+
+      //gifsDiv.append(ratingParagraph);
+
+    });
+
+  };
+
 
 //creates new button for each query
-  function newQueryButton () {
-    for (var i = 0; i < queries.length; i++) {
-      var newQueryButton = document.createElement("button");
-      newQueryButton.setAttribute("class", "queryButton");
-      newQuery = document.createTextNode(queries[i]);
-      newQueryButton.appendChild(newQuery);
-      $(".queryButtons").append(newQueryButton);
+  function newShowButtons() {
+
+    $(".showButtons").empty();
+
+    for (var i = 0; i < shows.length; i++) {
+
+      var s = $("<button>");
+
+      s.addClass("showButton");
+
+      s.attr("data-name", shows[i]);
+
+      s.text(shows[i]);
+
+      $(".showButtons").append(s);
     };
   };
 
-  newQueryButton();
 
-//Click event for each button
-  $(".queryButtons").on("click", "button", function() {
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q="+$(this).text()+"&api_key=dc6zaTOxFJmzC&limit=10";    
-        $.ajax({url:queryURL,method:'GET'})
-            .done(function(response) {
-				console.log(response);
-            });
+//Click event for each button to display movie info
+  $("#add-show").on("click", function(event) {
+      event.preventDefault();
+
+      var show = $("#query-input").val().trim();
+
+      shows.push(show);
+
+      newShowButtons();
   });
 
+  $(document).on("click", ".showButton", showMeDuhGIF);
+
+  newShowButtons();
+
 });
-
-
 
