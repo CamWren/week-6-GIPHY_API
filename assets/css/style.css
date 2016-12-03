@@ -11,10 +11,58 @@ body {
 }
 
 
+.showButtons {
+	margin-top: 7px;
+	margin-bottom: 5px;
+	margin-left: 50px;
+}
+
+
 .showButton {
 	margin: 10px;
     padding: 3px 15px 3px 15px;
     border-radius: 50px 15px;
     background-color: #fff;
     outline: none;
+}
+
+
+#query-input {
+	padding-left: 5px;
+}
+
+
+#Add-a-Show {
+	color: #fff;
+	margin-right: 5px;
+}
+
+
+#search {
+	margin-left: 9px;
+	margin-top: 20px;
+}
+
+
+#add-show {
+	font-weight: bold;
+	background-color: #D3D3D3;
+	margin-top: 10px;
+	padding: 3px 53px 3px 53px;
+	border-radius: 50px 15px;
+	outline: none;
+}
+
+
+.ratingText {
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	
+}
+
+
+.gifsDiv {
+	display: inline-block;
+	margin-right: 10px;
 }

@@ -3,7 +3,7 @@ $(document).ready(function() {
   var shows = ["The Office", "Seinfeld", "Mad Men", "An Idiot Abroad"];
 
 //Displays static gif and gif rating
-  function showMeDuhGIF() {
+  function showMeDaGIF() {
 
     var show = $(this).attr("data-name");
     var queryURL = "http://api.giphy.com/v1/gifs/search?q="+ show +"&api_key=dc6zaTOxFJmzC&limit=10&fmt=json";
@@ -12,16 +12,35 @@ $(document).ready(function() {
     //Creates AJAX call for each button
     $.ajax({url:queryURL,method:'GET'}).done(function(response) {
         
-      //var gifsDiv = $("<div class='gifsDiv'>");
+      console.log(queryURL);
 
-      var rating = response.rating;
+      console.log(response);
 
-      console.log(rating);
+      var results = response.data; 
 
-      //var ratingParagraph = $("<p>").text("Rating: " + rating);
+      for (var i = 0; i < results.length; i++) {
+        
+        /*if (results[i].rating === "r") {
+          break;
+        } else {*/
+          var gifsDiv = $("<div class='gifsDiv'>");
 
-      //gifsDiv.append(ratingParagraph);
+          var ratingSection = $("<p class='ratingText'>").text("Rating: " + results[i].rating);
 
+          var showImage = $("<img>");
+
+          showImage.attr("src", results[i].images.fixed_width_still.url);
+          showImage.attr("data-still", results[i].images.fixed_width_still.url);
+          showImage.attr("data-animate", results[i].images.fixed_width.url);
+          showImage.attr("data-state", "still");
+          showImage.attr("class", "showGIF");
+
+          gifsDiv.append(showImage);
+          gifsDiv.append(ratingSection);
+
+          $("#gifs").prepend(gifsDiv);
+        //};
+      };
     });
 
   };
@@ -58,9 +77,25 @@ $(document).ready(function() {
       newShowButtons();
   });
 
-  $(document).on("click", ".showButton", showMeDuhGIF);
+
+  $(document).on("click", ".showButton", showMeDaGIF);
 
   newShowButtons();
+
+
+//Click event for each gif to toggle between still and animated states
+  $(document).on("click", ".showGIF", function() {
+
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+      $(this).attr("src", $(this).data("animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).data("still"));
+      $(this).attr("data-state", "still");
+    }
+  });
 
 });
 
