@@ -28,7 +28,7 @@ body {
 
 
 #query-input {
-	padding-left: 5px;
+	padding-left: 7px;
 }
 
 
@@ -39,16 +39,17 @@ body {
 
 
 #search {
-	margin-left: 9px;
+	margin-left: 0px;
 	margin-top: 20px;
 }
 
 
 #add-show {
+	text-align: center;
 	font-weight: bold;
 	background-color: #D3D3D3;
 	margin-top: 10px;
-	padding: 3px 53px 3px 53px;
+	padding: 3px 61px 3px 60px;
 	border-radius: 50px 15px;
 	outline: none;
 }
@@ -65,4 +66,10 @@ body {
 .gifsDiv {
 	display: inline-block;
 	margin-right: 10px;
+}
+
+
+.showGIF {
+	border-width: 10px;
+	border-color: #000;
 }

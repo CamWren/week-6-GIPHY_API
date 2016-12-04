@@ -1,16 +1,18 @@
 $(document).ready(function() {
   
-  var shows = ["The Office", "Seinfeld", "Mad Men", "An Idiot Abroad"];
+  var topics = ["The Office", "Seinfeld", "The Twilight Zone", "An Idiot Abroad"];
 
 //Displays static gif and gif rating
   function showMeDaGIF() {
 
-    var show = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q="+ show +"&api_key=dc6zaTOxFJmzC&limit=10&fmt=json";
+    var topic = $(this).attr("data-name");
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=dc6zaTOxFJmzC&limit=10&fmt=json";
   
 
     //Creates AJAX call for each button
     $.ajax({url:queryURL,method:'GET'}).done(function(response) {
+
+      $("#gifs").empty();
         
       console.log(queryURL);
 
@@ -29,9 +31,9 @@ $(document).ready(function() {
 
           var showImage = $("<img>");
 
-          showImage.attr("src", results[i].images.fixed_width_still.url);
-          showImage.attr("data-still", results[i].images.fixed_width_still.url);
-          showImage.attr("data-animate", results[i].images.fixed_width.url);
+          showImage.attr("src", results[i].images.fixed_height_still.url);
+          showImage.attr("data-still", results[i].images.fixed_height_still.url);
+          showImage.attr("data-animate", results[i].images.fixed_height.url);
           showImage.attr("data-state", "still");
           showImage.attr("class", "showGIF");
 
@@ -51,15 +53,15 @@ $(document).ready(function() {
 
     $(".showButtons").empty();
 
-    for (var i = 0; i < shows.length; i++) {
+    for (var i = 0; i < topics.length; i++) {
 
       var s = $("<button>");
 
       s.addClass("showButton");
 
-      s.attr("data-name", shows[i]);
+      s.attr("data-name", topics[i]);
 
-      s.text(shows[i]);
+      s.text(topics[i]);
 
       $(".showButtons").append(s);
     };
@@ -68,11 +70,12 @@ $(document).ready(function() {
 
 //Click event for each button to display movie info
   $("#add-show").on("click", function(event) {
+
       event.preventDefault();
 
-      var show = $("#query-input").val().trim();
+      var topic = $("#query-input").val().trim();
 
-      shows.push(show);
+      topics.push(topic);
 
       newShowButtons();
   });
