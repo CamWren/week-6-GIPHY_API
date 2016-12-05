@@ -62,6 +62,17 @@ body {
 }
 
 
+#clear-gifs {
+	text-align: center;
+	font-weight: bold;
+	background-color: #D3D3D3;
+	margin-top: 10px;
+	padding: 3px 61px 3px 60px;
+	border-radius: 50px 15px;
+	outline: none;
+}
+
+
 .ratingText {
 	color: #fff;
 	font-weight: bold;

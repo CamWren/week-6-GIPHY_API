@@ -81,6 +81,13 @@ $(document).ready(function() {
   });
 
 
+  $("#clear-gifs").on("click", function(event) {
+
+      $("#gifs").empty();
+      
+  });
+
+
   $(document).on("click", ".showButton", showMeDaGIF);
 
   newShowButtons();
