@@ -1,7 +1,14 @@
+@font-face {
+	font-family: "CherryCreamSoda";
+	src: url(../fonts/CherryCreamSoda.ttf);
+}
+
 body {
 	background-color: #000;
 	background-repeat: no-repeat;
 	background-size:cover;
+	background-image: url(../images/family-watching-tv.jpg);
+	font-family: "CherryCreamSoda";
 }
 
 
