@@ -6,7 +6,7 @@ $(document).ready(function() {
   function showMeDaGIF() {
 
     var topic = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=dc6zaTOxFJmzC&limit=10&fmt=json";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ topic +"&api_key=dc6zaTOxFJmzC&limit=10&fmt=json";
   
 
     //Creates AJAX call for each button
@@ -64,7 +64,9 @@ $(document).ready(function() {
       s.text(topics[i]);
 
       $(".showButtons").append(s);
+
     };
+
   };
 
 
@@ -78,15 +80,19 @@ $(document).ready(function() {
       topics.push(topic);
 
       newShowButtons();
+
+      $("#query-input").val("");
+
   });
 
 
   $("#clear-gifs").on("click", function(event) {
 
-      $("#gifs").empty();
-      
-  });
+    event.preventDefault();
 
+    $("#gifs").empty();
+
+  });
 
   $(document).on("click", ".showButton", showMeDaGIF);
 
@@ -105,6 +111,7 @@ $(document).ready(function() {
       $(this).attr("src", $(this).data("still"));
       $(this).attr("data-state", "still");
     }
+    
   });
 
 });
