@@ -19,15 +19,14 @@ body {
 
 
 .showButtons {
-	margin-top: 5px;
+	margin-top: 15px;
 	margin-bottom: 5px;
 	margin-left: 50px;
 }
 
 
 .showButton {
-	float: left;
-	margin: 10px 10px 10px 10px;
+	margin: 5px 10px 5px 10px;
     padding: 3px 15px 3px 15px;
     border-radius: 15px 50px;
     border-color: #777e8b;
@@ -86,6 +85,7 @@ body {
 
 .gifsDiv {
 	display: inline-block;
+	margin-top: 15px;
 	margin-right: 10px;
 }
 
